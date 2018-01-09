@@ -1,0 +1,22 @@
+clc;
+clear;
+
+SER = [];
+SNR = [];
+SERR = [];
+for snr = 1:30
+    ser = project_test_v2_1(snr,1);
+    serr = project_test_v2_1(snr,0);
+    SER = [SER ser];
+    SNR = [SNR snr];
+    SERR = [SERR serr];
+end
+figure
+semilogy(SNR,SER,'-r','linewidth',2);
+hold on 
+semilogy(SNR,SERR,'-b','linewidth',2);
+xlabel('SNR');
+ylabel('SER');
+legend('Phase Noise')
+grid on;
+axis([0 30 0 1])
